@@ -13,7 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # 1. Load edge-detected image
-edge_image = cv2.imread('bordes_panda_canny.jpg', cv2.IMREAD_GRAYSCALE)
+edge_image = cv2.imread('../bordes_panda_canny.jpg', cv2.IMREAD_GRAYSCALE)
 
 if edge_image is None:
     print("Error: Could not load edge image. Ensure 'bordes_panda_canny.jpg' exists.")
