@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Numerical Computing Project - Complete Execution
 Simple script to run both parts of the project
