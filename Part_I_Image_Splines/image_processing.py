@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Numerical Computing Project - Part I
 Image Processing and Edge Detection
