@@ -2,7 +2,7 @@
 
 ## Contorno Superior de una Imagen usando Splines Cúbicos y Análisis de Circuito RLC
 
-**Estudiante:** [Nombre del estudiante]  
+**Estudiantes:** Santiago Lanz, Ada Arellano, Adolfo Barberi  
 **Curso:** Cálculo Numérico  
 **Fecha:** 7 de julio, 2025  
 
