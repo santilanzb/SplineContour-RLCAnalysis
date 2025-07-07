@@ -12,22 +12,18 @@ if bordes_imagen is None:
 #2. Encontrar todos los contornos en la imagen de bordes
 # cv2.RETR_EXTERNAL: Recupera solo los contornos externos.
 # cv2.CHAIN_APPROX_NONE: Almacena todos los puntos del contorno.
-# Esto es útil para obtener la forma detallada para la interpolación.
+# Para obtener la forma detallada para la interpolación.
 
 contours, hierarchy = cv2.findContours(bordes_imagen, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
-#3. Seleccionar el contorno principal, es decir la curva.
-# Generalmente, el objeto principal es el contorno con mayor área.
+#3. Seleccionar el contorno principal, es decir la curva superior de la imagen.
 if not contours:
     print("No se encontraron contornos en la imagen.")
     exit()
-
-# Encontrar el contorno con el área más grande
 main_contour = max(contours, key=cv2.contourArea)
-
 print(f"Se encontró un contorno principal con {len(main_contour)} puntos.")
 
-# --- 4. Extraer los puntos que conforman el contorno superior ---
+#4. Extraer los puntos que conforman el contorno superior
 # Queremos encontrar el punto con la mínima coordenada Y (más arriba) para cada coordenada X.
 # Esto creará una "envoltura" superior del contorno.
 
@@ -50,16 +46,13 @@ for point in main_contour:
         puntos_contorno_superior[x] = y
 
 # Convertir el diccionario a una lista de tuplas (x, y) y ordenarlas por x para la interpolación
-# Es importante que los puntos estén ordenados por X para la interpolación con splines
+# Es importante que los puntos estén ordenados por X para la interpolación con splines.
 lista_puntos_superiores = sorted(puntos_contorno_superior.items())
 
-# Ahora, `lista_puntos_superiores` contiene tuplas (x, y) ordenadas,
-# representando el contorno superior de tu objeto.
+# Ahora, `lista_puntos_superiores` contiene tuplas (x, y) ordenadas
 print(f"Se extrajeron {len(lista_puntos_superiores)} puntos para el contorno superior.")
-# print("Puntos del contorno superior (primeros 10):", lista_puntos_superiores[:10]) # Para depuración
 
-# --- Opcional: Visualizar los puntos extraídos en una imagen negra ---
-# Esto te ayudará a verificar si has extraído los puntos correctos
+# Visualizar los puntos extraídos en una imagen negra esto ayudando averificar si se han extraído los puntos correctos
 imagen_visualizacion = np.zeros_like(bordes_imagen) # Crea una imagen negra del mismo tamaño
 for x, y in lista_puntos_superiores:
     # Dibuja un pequeño círculo blanco en cada punto extraído
@@ -70,14 +63,8 @@ cv2.imwrite('contorno_superior_visualizacion.jpg', imagen_visualizacion)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-# Ahora, `lista_puntos_superiores` es la lista de (x, y) puntos
-# que necesitas para la interpolación con splines cúbicos.
-# Estos puntos están ordenados por su coordenada X, lo cual es ideal para los splines.
-
-
-# Asumimos que 'lista_puntos_superiores' ya fue obtenida
-# Por ejemplo:
-# lista_puntos_superiores = [(x1, y1), (x2, y2), ..., (xn, yn)]
+# Ahora, `lista_puntos_superiores` es la lista de (x, y) puntos que necesitas para la interpolación con splines cúbicos.
+# Estos puntos están ordenados por su coordenada X, ideal para los splines.
 
 # Paso 0: Preparar los datos
 # Convertir la lista de tuplas a arrays de NumPy para facilitar las operaciones
@@ -86,7 +73,7 @@ y_coords = np.array([p[1] for p in lista_puntos_superiores])
 
 n = len(x_coords) - 1 # Número de intervalos (si hay n+1 puntos, hay n intervalos)
 
-# Si tienes muy pocos puntos (menos de 2), no puedes hacer spline.
+# Si hay muy pocos puntos (menos de 2), no puedes hacer spline.
 if n < 1:
     print("Se necesitan al menos 2 puntos para la interpolación con splines.")
     exit()
@@ -101,8 +88,7 @@ h = np.diff(x_coords) # h[i] = x_{i+1} - x_i
 A = np.zeros((n - 1, n - 1))
 B = np.zeros(n - 1)
 
-# El bucle 'i' representa el índice de la fila en la matriz A (de 0 a n-2)
-# y también corresponde al índice 'i' en la ecuación del spline para M_{i+1}
+# El bucle 'i' representa el índice de la fila en la matriz A (de 0 a n-2) y también corresponde al índice 'i' en la ecuación del spline para M_{i+1}
 for i in range(n - 1):
     # Coeficientes de la diagonal inferior: A[i, i-1]
     # Corresponde a M_i (en el esquema M_0 ... M_n). Solo aplica si i > 0.
@@ -183,6 +169,3 @@ plt.grid(True)
 plt.legend()
 plt.gca().invert_yaxis() # Las imágenes tienen el eje Y invertido (0 arriba)
 plt.show()
-
-# Opcional: Guardar los puntos de la curva spline si los necesitas
-# np.savetxt('curva_spline_puntos.csv', np.column_stack((x_spline, y_spline)), delimiter=',', header='x,y', comments='')
