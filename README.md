@@ -2,24 +2,20 @@
 
 ## Upper Image Contour using Cubic Splines and RLC Circuit Analysis
 
-**Student:** [Student name]  
-**Course:** Numerical Computing  
-**Due date:** July 7, 2025  
-
 ---
 
 ## 📋 Project Description
 
 This project implements two fundamental applications of numerical methods:
 
-1. **Part I:** Upper contour extraction and smoothing using natural cubic splines (Ada's work)
+1. **Part I:** Upper contour extraction and smoothing using natural cubic splines
 2. **Part II:** Complex RLC circuit analysis using numerical methods for differential equations
 
 ## 🗂️ Project Structure
 
 ```
 SplineContour-RLCAnalysis/
-├── 📁 Part_I_Image_Splines/              # Part I: Cubic Splines (Ada's work)
+├── 📁 Part_I_Image_Splines/              # Part I: Cubic Splines
 │   ├── image_processing.py               # Image processing and edge detection
 │   └── cubic_splines.py                  # Cubic spline implementation
 │
@@ -67,7 +63,7 @@ pip install numpy scipy matplotlib opencv-python
 
 ### Option 2: Manual Execution by Parts
 
-#### Part I: Cubic Splines (Ada's work)
+#### Part I: Cubic Splines
 ```bash
 cd Part_I_Image_Splines
 python image_processing.py
@@ -192,37 +188,6 @@ Asegúrese de que la terminal soporte UTF-8 para caracteres especiales.
 ### Implementación desde Fundamentos
 ✅ Algoritmos implementados manualmente y validados contra bibliotecas
 
-## 👥 Créditos y Referencias
-
-### Autor
-- **[Nombre del estudiante]**
-- Implementación completa de algoritmos
-- Documentación técnica
-- Validación numérica
-
-### Referencias Bibliográficas
-1. Chapra, S.C. & Canale, R.P. (2010). *Métodos Numéricos para Ingenieros*
-2. Burden, R.L. & Faires, J.D. (2011). *Análisis Numérico*
-3. Alexander, C.K. & Sadiku, M.N.O. (2016). *Fundamentos de Circuitos Eléctricos*
-
-### Herramientas Utilizadas
-- **Python 3.13**: Lenguaje de programación
-- **NumPy/SciPy**: Computación científica
-- **OpenCV**: Procesamiento de imágenes
-- **Matplotlib**: Visualización científica
-
 ---
 
-## 📞 Contacto
-
-Para preguntas sobre la implementación o el código:
-- **Estudiante**: [Nombre del estudiante]
-- **Email**: [email@dominio.com]
-- **Curso**: Cálculo Numérico
-- **Institución**: [Nombre de la universidad]
-
----
-
-**Fecha de completación**: 7 de julio, 2025  
-**Versión del proyecto**: 1.0  
-**Estado**: ✅ Completado y validado
+**Project Status**: ✅ Completed and validated

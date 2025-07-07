@@ -3,9 +3,6 @@
 Numerical Computing Project - Part I
 Image Processing and Edge Detection
 
-Original implementation by: Ada
-Enhanced for project structure
-
 This module handles the initial image processing:
 - Grayscale conversion
 - Canny edge detection
@@ -31,7 +28,6 @@ def load_and_process_image(image_path='../image.png', low_threshold=100, high_th
     print("=" * 60)
     print("PART I: IMAGE PROCESSING AND EDGE DETECTION")
     print("=" * 60)
-    print(f"Original implementation by: Ada")
     print(f"Loading image from: {image_path}")
     
     # Load image in grayscale
@@ -45,7 +41,7 @@ def load_and_process_image(image_path='../image.png', low_threshold=100, high_th
     print(f"  Dimensions: {imagen.shape[1]} x {imagen.shape[0]} pixels")
     print(f"  Data type: {imagen.dtype}")
     
-    # Apply Canny edge detector (Ada's original implementation)
+    # Apply Canny edge detector
     print(f"\nApplying Canny edge detection...")
     print(f"  Lower threshold: {low_threshold}")
     print(f"  Upper threshold: {high_threshold}")
@@ -92,19 +88,19 @@ def save_edge_image(edge_image, output_path='bordes_panda_canny.jpg'):
 
 def main():
     """
-    Main function - preserves Ada's original workflow
+    Main function for image processing workflow
     """
     try:
-        # Load and process image (Ada's original approach)
+        # Load and process image
         original_image, edge_image = load_and_process_image()
         
         if original_image is None:
             return False
             
-        # Display results (Ada's original visualization)
+        # Display results
         display_results(original_image, edge_image)
         
-        # Save edge image (Ada's original saving)
+        # Save edge image
         save_edge_image(edge_image)
         
         print(f"\n✓ Image processing completed successfully!")

@@ -3,9 +3,6 @@
 Numerical Computing Project - Part I
 Cubic Spline Interpolation
 
-Original implementation by: Ada
-Enhanced for project structure
-
 This module performs cubic spline interpolation of extracted edge points:
 1. Extract upper contour points from edge image
 2. Compute natural cubic spline coefficients

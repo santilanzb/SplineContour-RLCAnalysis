@@ -11,7 +11,7 @@ def main():
     print("=" * 60)
     print("NUMERICAL COMPUTING PROJECT")
     print("=" * 60)
-    print("Part I: Image Splines (Ada's work)")
+    print("Part I: Image Splines")
     print("Part II: RLC Circuit Analysis")
     print()
     
@@ -39,7 +39,7 @@ def main():
     print("PROJECT COMPLETED SUCCESSFULLY!")
     print("=" * 60)
     print("Check the generated files:")
-    print("- Part_I_Image_Splines/: Ada's spline work")
+    print("- Part_I_Image_Splines/: Spline interpolation")
     print("- Part_II_RLC_Circuit/: Circuit analysis")
     print("- Documentacion/: Spanish documentation")
 
